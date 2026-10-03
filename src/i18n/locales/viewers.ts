@@ -357,4 +357,190 @@ export default {
       empty: '这个演示文稿没有幻灯片。',
     },
   },
+  ru: {
+    zen: 'Дзен-режим — скрыть всё, кроме страницы (выход — Esc)',
+    // Shared across readers.
+    selection: 'Выделение',
+    index: {
+      // OCR is a reading, not a transcript. Said where the reader lands after
+      // clicking a citation, because that is the moment the difference bites.
+      recognised: 'Текст распознан',
+      recognisedHint:
+        'У этого документа нет текстового слоя, поэтому текст распознан по изображениям страниц. Цитаты по-прежнему ведут к нужному отрывку, но в формулировках могут быть ошибки — сверяйте цитаты со страницей.',
+      updateAvailable: 'Обновить индекс',
+      updateHint:
+        'Индекс ИИ построен более старой версией приложения. Он работает как есть — нажмите, чтобы перестроить текущей версией. Цитаты в ваших заметках сохранятся в любом случае.',
+    },
+
+    // The offer to write a source note. Shown only while no page in the KB
+    // cites this document — an offer, never a nag: the detection is free, the
+    // writing costs tokens, so a click sits between them.
+    // A scanned PDF is not a broken one, and "0 blocks" said nothing useful
+    // to anybody. This says what happened, what still works, and stops.
+    dismiss: 'Понятно',
+    scanned: {
+      title: 'Нет текстового слоя — похоже, это скан',
+      body: 'Каждая страница — картинка, поэтому индексу нечего цитировать, и агент не может ссылаться на отрывки из него. Чтение, выделение, аннотации и чтение вслух работают как обычно, а всё, что вы сами написали о нём в своих заметках, не затронуто.',
+      // Reading the pictures is offered, never done uninvited: it is minutes
+      // of this machine's CPU, so the size of the bill is on the button.
+      offer: 'Распознать картинки',
+      language: 'Язык',
+      // The number is the point. A three-hundred-page book is most of an
+      // hour, and finding that out afterwards is finding it out too late.
+      start: 'Распознать {n} стр.',
+      estimate: 'Примерно {mins} мин. на этом компьютере. Выполняется здесь, поэтому документ остаётся в папке, — но алфавит при первом использовании языка загружается.',
+      // Before page one there is a wait with nothing to count: the engine
+      // starts and, the first time a language is used, its data is fetched.
+      // Reported as "page 0 of 311" it reads as stuck.
+      preparing: 'Готовлю язык…',
+      running: 'Читаю страницу {c} из {t}…',
+      cancel: 'Отмена',
+      // Said plainly because cancelling really does throw the work away.
+      cancelled: 'Отменено — ничего не записано.',
+      failed: 'Не удалось прочитать страницы: {msg}',
+      done: 'Из картинок прочитано отрывков: {n}. Цитаты в этот документ теперь работают.',
+      empty: 'Ничего разборчивого не вышло. Другой язык или более чёткий скан могут помочь.',
+    },
+
+    sourceNote: {
+      write: 'Написать заметку',
+      hint: 'На этот документ пока не ссылается ни одна страница в этой базе знаний. Так составляется запрос агенту — вы можете отредактировать его перед отправкой.',
+      prompt:
+        'Прочитай {path} и напиши по нему исходную заметку в этой базе знаний: страницу по уже используемому здесь шаблону, с `type: source` и несколькими тегами во frontmatter, кратким изложением содержания и объявлением источника `[[pdf1:{path}]]`, чтобы работали цитаты в него. Сошлись на неё со страницы-указателя. Если изменений будет больше чем в одном файле, сначала покажи план.',
+    },
+
+    pdf: {
+      loading: 'Открываю PDF…',
+      loadingSlow: 'Открываю PDF — первый раз дольше всего…',
+      restoring: 'Возвращаюсь туда, где вы остановились…',
+      readAloud: 'Читать вслух',
+      note: 'Заметка',
+      underline: 'Подчеркнуть',
+      viewAnnotations: 'Показать аннотации',
+      indexStarting: 'Начинаю…',
+      indexExtracting: 'Извлекаю страницу {c}/{t}',
+      indexBuilding: 'Строю индекс…',
+      indexBuildingN: 'Строю раздел {c}/{t}',
+      indexWriting: 'Записываю индекс {c}/{t}',
+      indexAlready: 'Уже проиндексировано',
+      indexDone: 'Проиндексировано',
+      indexSections: 'Разделов: {n}',
+      indexFailed: 'Не удалось построить индекс',
+    },
+
+    epub: {
+      toc: 'Оглавление',
+      noNav: 'Без навигации',
+      smallerText: 'Уменьшить шрифт',
+      largerText: 'Увеличить шрифт',
+      searchInBook: 'Искать в книге',
+      readChapter: 'Прочитать эту главу вслух',
+      viewAnnotations: 'Показать аннотации',
+      searchPlaceholder: 'Искать в книге…',
+      searching: 'Поиск…',
+      results: 'Результатов: {n}',
+      resultsOne: 'Результат: {n}',
+      noMatches: 'Ничего не найдено.',
+      prevPage: 'Предыдущая страница',
+      nextPage: 'Следующая страница',
+      backToPage: 'Назад на страницу {page}',
+      backToOrigin: 'Назад туда, откуда перешли',
+      highlightColor: 'Выделить ({name})',
+      readSelection: 'Прочитать выделение вслух',
+      underlineRed: 'Подчеркнуть (красным)',
+      note: 'Заметка',
+      deleteMark: 'Удалить пометку',
+    },
+
+    artifact: {
+      preview: 'Предпросмотр',
+      source: 'Исходник',
+      openNewTab: 'Открыть в новой вкладке (в песочнице)',
+      newTab: 'Новая вкладка',
+    },
+
+    annotations: {
+      category: {
+        highlight: 'Выделение',
+        underline: 'Подчёркивание',
+        note: 'Комментарий',
+        other: 'Аннотация',
+      },
+      count: 'Аннотаций: {n}',
+      openSource: 'Открыть исходную книгу',
+      sourceMissing: 'Исходный файл отсутствует — переход невозможен',
+      empty: 'Аннотаций пока нет — выделите текст в читалке, чтобы отметить его',
+      page: 'Страница {page}',
+      jumpTitle: 'Нажмите, чтобы перейти к отрывку',
+      noExcerpt: '(без текста отрывка)',
+      notePlaceholder: 'Запишите мысль… (⌘↵ — сохранить, Esc — отмена)',
+      editComment: 'Нажмите, чтобы редактировать комментарий',
+      addComment: 'Добавить комментарий',
+      changeTo: 'Сменить на {name}',
+      deleteAnnotation: 'Удалить аннотацию',
+    },
+
+    markdown: {
+      createPageTitle: 'Создать эту страницу?',
+      createPagePrompt: 'Такой страницы нет. Создать {target}?',
+      createPageButton: 'Создать',
+    },
+
+    docx: {
+      loading: 'Открываю документ…',
+      loadFailed: 'Не удалось прочитать этот документ Word.',
+      indexing: 'Индексирую для ИИ…',
+      indexed: 'Проиндексировано · блоков: {n}',
+      indexFailed: 'Не удалось построить индекс',
+      legacyTitle: 'Устаревший формат .doc',
+      legacyHint:
+        'Word 97–2003 (.doc) — бинарный формат, который нельзя прочитать в браузере. Откройте его в Word или Pages и сохраните копию как .docx.',
+      viewAnnotations: 'Показать аннотации',
+      highlightColor: 'Выделить ({name})',
+      readSelection: 'Прочитать выделение вслух',
+      underlineRed: 'Подчеркнуть (красным)',
+      note: 'Заметка',
+      deleteMark: 'Удалить пометку',
+    },
+
+    media: {
+      cantPlay:
+        'Этот браузер не может воспроизвести {name} — такой кодек здесь не поддерживается. Отдельный плеер, возможно, всё равно откроет его.',
+    },
+
+    image: {
+      zoomIn: 'Приблизить (+)',
+      zoomOut: 'Отдалить (−)',
+      actual: 'Реальный размер (1)',
+      fit: 'Вписать',
+      // Says what the two gestures are, because neither is discoverable.
+      fitHint: 'Вписать в панель (0) — дважды щёлкните картинку или сведите пальцы для масштаба',
+    },
+
+    csv: {
+      empty: 'Пустой файл.',
+      rowsCut: 'Показаны первые {shown} из {total} строк.',
+      colsCut: 'Некоторые столбцы не показаны.',
+    },
+
+    sheet: {
+      loading: 'Открываю книгу…',
+      loadFailed: 'Не удалось прочитать эту книгу.',
+      legacyTitle: 'Устаревший формат .xls',
+      legacyHint:
+        'Excel 97–2003 (.xls) — бинарный формат, который нельзя прочитать в браузере. Откройте его в Excel или Numbers и сохраните копию как .xlsx.',
+      cut: 'Показаны первые {shown} из {total} строк.',
+      empty: 'Этот лист пуст.',
+    },
+
+    slides: {
+      loading: 'Открываю презентацию…',
+      loadFailed: 'Не удалось прочитать эту презентацию.',
+      legacyTitle: 'Устаревший формат .ppt',
+      legacyHint:
+        'PowerPoint 97–2003 (.ppt) — бинарный формат, который нельзя прочитать в браузере. Откройте его в PowerPoint или Keynote и сохраните копию как .pptx.',
+      outlineHint: 'Вид структуры — текст и картинки, а не исходный макет слайдов.',
+      empty: 'В этой презентации нет слайдов.',
+    },
+  },
 }

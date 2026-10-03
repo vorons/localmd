@@ -242,4 +242,149 @@ export default {
     vsNotebooklm: '对比 NotebookLM',
     whyChromium: '为什么只支持 Chrome 和 Edge？',
   },
+  ru: {
+    // ── Citations, shown before anything is claimed ──────────────────
+    showLabel: 'Момент, когда всё сходится',
+    diff3Title: 'Цитаты, по которым можно кликнуть.',
+    diff3Body:
+      'Спросите о 300-страничном PDF — и ответ придёт с цитатами, по которым можно кликнуть: прямо к абзацу, откуда взято. Эти цитаты записаны в ваш собственный Markdown, поэтому они будут работать и завтра, в вашей папке, с нами или без нас.',
+    showCapNote: 'Ваша заметка. Каждая цитата — обычный текст в файле.',
+    showCapPdf: 'Источник, в месте абзаца, на который указывает цитата.',
+
+    // ── Who decides ──────────────────────────────────────────────────
+    // Each line names a mechanism that exists — the diff review, ask-first
+    // mode, git — not a promise about intent.
+    reviewLabel: 'Кто решает',
+    reviewTitle: 'Он предлагает. Вы решаете.',
+    review1: 'Каждое изменение показывается как diff. Одобрите его или выбросьте.',
+    review2: 'В режиме «сначала спросить» ничто не касается диска, пока вы не скажете «да».',
+    review3: 'Git встроен, поэтому история, к которой можно вернуться, есть всегда.',
+
+    // ── The three cards ──────────────────────────────────────────────
+    // Written to roughly one length: they sit side by side and are equals.
+    diffLabel: 'Ничего менять не нужно',
+    basicsTitle: 'Подходит к тому, что у вас уже есть.',
+    // "Nothing to install" was the old title, and it was not quite true: the
+    // Connect extension is an install, optional but real. A page that says
+    // "nothing" and then asks for something has spent its credibility on the
+    // first card.
+    diff1Title: 'Достаточно браузера.',
+    diff1Body:
+      'localmd — это веб-страница. Откройте её, выберите папку — и агент уже здесь. Нечего скачивать, негде регистрироваться. Единственная необязательная установка — расширение Connect, если хотите, чтобы он видел ваши вкладки браузера.',
+    // Under the url-bar drawing in card 01.
+    installCap: 'вот и всё',
+    adaptTitle: 'Ваши папки, ваша структура.',
+    // "asks before it moves anything", not "never moves anything": what
+    // exists today is review, not a write guard, and copy may say the agent
+    // asks but not that it cannot.
+    adaptBody:
+      'Здесь нет шага импорта, потому что нет формата, во что импортировать. Откройте существующее хранилище или ту папку загрузок, которую так и не разобрали. Агент следует вашей структуре: добавляет страницы рядом с вашими файлами, обычным Markdown, и спрашивает, прежде чем что-то переместить.',
+    diff5Title: 'Ваша модель, ваш ключ.',
+    // The provider names live under it as chips built from the real provider
+    // table — a list written twice drifts.
+    diff5Body:
+      'Добавьте свой API-ключ. Запросы идут напрямую провайдеру, которого вы выбрали, — ваш ключ и ваш текст идут туда и больше никуда. Вы платите им, по их ценам.',
+    freeLine:
+      'Без ключа это всё равно полноценный блокнот и читалка для вашей папки.',
+    caps: 'PDF · EPUB · Markdown · Вики-ссылки · Вид графа · Git и GitHub · Навыки · MCP-серверы · Подключение браузера',
+
+    // ── KB health ────────────────────────────────────────────────────
+    // The counterweight to a page that keeps saying the agent adds files:
+    // this is how you ever see the whole thing. Every claim here is checked
+    // against `computeLint`, which reads no files and calls no model, and the
+    // second paragraph is the principle the check exists to demonstrate — a
+    // finding is a view, computed on demand, never a record left in someone's
+    // folder.
+    healthLabel: 'здоровье БЗ',
+    healthTitle: 'Ничто не гниёт тихо.',
+    healthBody:
+      'Попросите проверку здоровья — и она сразу пройдёт по всей базе знаний: ссылки в никуда, страницы, на которые никто не ссылается, материалы, которые вы добавили, но о которых так и не написали, заметки, цитирующие документ, который с тех пор изменился. Это обычный код, а не модель, поэтому токены не тратятся.',
+    healthCap: 'Считается, когда вы спрашиваете. Нигде не сохраняется.',
+    healthNote:
+      'Она сообщает. Ничего не чинит и не блокирует. И ничего не записывает: отчёт вычисляется заново при каждом запросе и забывается, когда вы его закрываете. Список проблем, сохранённый в вашу папку, стал бы ещё одним файлом, который вам поддерживать, а устаревший список начинает врать.',
+
+    // ── The browser ──────────────────────────────────────────────────
+    connectLabel: 'за пределами диска',
+    connectTitle: 'Подключите ваш браузер.',
+    connectBody:
+      'После ваших собственных файлов браузер — это место, где живёт большая часть того, что вы читаете и чем пользуетесь. localmd Connect — небольшое расширение для Chrome, которое позволяет спрашивать вкладки браузера как файлы в вашей папке: агент открывает вкладки, читает страницы, кликает и печатает в браузере, где вы уже вошли. Всё, что опубликовало бы что-то на реальном сайте, сначала спрашивает вас. Отказывает расширение, а не промпт.',
+    // How the services you use get in. The mechanism lives here and the
+    // reasoning lives in `why4a`, which tells the same story from the other
+    // end; a mechanism explained in both places drifts.
+    connectApps:
+      'Так же подключаются и ваши веб-приложения. Укажите агенту на сервис — и он либо подключит для него MCP-сервер, дотягиваясь до endpoints, недоступных веб-странице самой по себе, либо сам разберётся с сайтом в браузере и сохранит выученное как навык в вашей папке. В любом случае у вас останется файл, которым вы владеете, лежащий в вашей базе знаний.',
+    connectLink: 'localmd Connect в Chrome Web Store',
+
+    // ── Local-first ──────────────────────────────────────────────────
+    // Everything about where your things are and where they go lives here,
+    // once. It used to be said four times across the page — a pillar, two
+    // beliefs, a don't list and a data-flow block — and a thing said four
+    // times reads as a thing the writer is nervous about.
+    localLabel: 'локальность прежде всего',
+    localTitle: 'Ваши файлы, а не наша база данных.',
+    localBody:
+      'Ваша база знаний — это папка: обычный Markdown рядом с PDF и EPUB, которые у вас уже были. Никакой базы данных за ней, никакого аккаунта перед ней. Открывайте в любом редакторе, синхронизируйте как хотите, уходите когда хотите. Ничего не заперто.',
+    flowLabel: 'куда идут ваши данные',
+    flow1: 'Ваши файлы → никуда. Они остаются в вашей папке.',
+    flow2:
+      'Ваши вопросы и прочитанные отрывки → выбранной вами модели, по вашему ключу.',
+    flow3: 'Нам → ничего. Сервера, куда отправлять, просто нет.',
+
+    // ── Free and open ────────────────────────────────────────────────
+    // "Forever" is a strong word, and the second paragraph is what earns it:
+    // MIT is the mechanism, not the promise.
+    freeLabel: 'без подвоха',
+    freeTitle: 'Бесплатно навсегда. Открытый код.',
+    free1:
+      'Бесплатно всё: агент, читалка книг, индексы документов, синхронизация git и GitHub, MCP, расширение Connect. Нет платного тарифа, нет аккаунта, нет лимитов использования. Единственное, за что вы платите, — ваша модель, и вы платите провайдеру напрямую. Мы ничего не добавляем сверху.',
+    free2:
+      'И приложение, и расширение — открытый код, MIT. Именно это делает «навсегда» фактом, а не обещанием: код никто не сможет забрать назад, включая нас.',
+    sourceLink: 'localmd на GitHub',
+    connectSource: 'localmd Connect на GitHub',
+
+    // ── Why I built this ─────────────────────────────────────────────
+    // The only first-person block on the page, and deliberately so.
+    // Everything else speaks as "we", which is the right voice for a claim
+    // about the software and the wrong one for a claim about a motive: a
+    // motive has to belong to somebody. Used everywhere, "I" is a mannerism;
+    // used once, it is a signature — so this is the one section that may.
+    // Two paragraphs carry a link, and are split around it so each language
+    // can place the link where its own sentence wants it.
+    whyLabel: 'откуда это взялось',
+    whyTitle: 'Зачем я это построил.',
+    why1: 'Я пробовал Notion и ушёл, потому что мои заметки жили в чужой базе данных. Пробовал Obsidian и тоже ушёл, потому что поддержание плагинов в рабочем состоянии стоило дороже, чем стоили сами заметки. Так я вернулся к папке Markdown в git-репозитории, которая ничего от меня не требовала и ничего для меня не делала.',
+    why2a: 'Потом я прочитал заметку Карпати о ',
+    why2Link: 'LLM wiki',
+    why2b:
+      ', и голая папка вдруг обрела смысл: пусть агент держит структуру, а суждения оставлю себе. Я направил coding-агента на папку своих заметок и какое-то время так и пользовался.',
+    why3: 'Три вещи меня измотали. Он жёг токены на инструментах, построенных для кода, а не для заметок. Он не умел цитировать книги, поэтому я постоянно переключался между терминалом и PDF-читалкой, копируя абзацы вручную. А с браузером он справлялся плохо: расширения умеют подключать агента к вашим вкладкам, но в ответ приходит рыхлый текст без привязанного источника, к которому нельзя вернуться. Три отсутствующие функции, одна проблема: контекст из окна в окно носил я. Поэтому я построил localmd, а вместе с ним — localmd Connect.',
+    // The plugin argument, which is the same story from the other end: the
+    // thing that made Obsidian worth using is the thing that made it exhausting.
+    // The mechanism is not repeated here — `connectApps` up in the browser
+    // section carries that, and a mechanism explained twice drifts.
+    why4a:
+      'То, что я любил в Obsidian, и то, из-за чего я ушёл, было одним и тем же: плагины. И вот мой ответ на это. Приложения, ради которых я хотел бы плагин, уже есть в вебе, уже открыты во вкладке, в них уже выполнен вход. ',
+    why4Link: 'Connect',
+    why4b:
+      ' делает больше, чем превращает эти вкладки в файлы. Он превращает сами приложения в плагины, которые нечего устанавливать, настраивать и обновлять, потому что это те самые приложения, которыми вы пользуетесь каждый день. Он подключает их, когда они нужны, и не мешается, когда нет.',
+    whyKicker:
+      'Вот и вся история о том, как появился localmd. Я до сих пор пользуюсь им каждый день для собственных заметок, так что если на этой странице что-то неверно, я узнаю об этом первым.',
+
+    // ── Phones ───────────────────────────────────────────────────────
+    // The one forward-looking claim on a page that otherwise only describes
+    // what exists, so it is written as small as it honestly can be: no date,
+    // and nothing to sign up for. A waitlist here would be collecting
+    // addresses on a page whose first promise is that it has no account.
+    mobileLabel: 'в работе',
+    mobileTitle: 'Мобильная версия в пути.',
+    mobileBody:
+      'localmd нужен браузер, умеющий открывать папку, а сегодня это Chrome или Edge на десктопе. Версия для телефона уже строится. Без даты и без записи в лист ожидания; когда будет готова — появится здесь, бесплатная и открытая, как и всё остальное.',
+
+    // ── Closing ─────────────────────────────────────────────────────
+    closingTitle: 'Откройте папку. Начинайте думать.',
+    footer: 'localmd · агент, живущий в вашей папке',
+    feedback: 'Сообщить о проблеме',
+    vsNotebooklm: 'Против NotebookLM',
+    whyChromium: 'Почему Chrome или Edge?',
+  },
 };

@@ -20,4 +20,14 @@ export default {
     groupLocalOffline: '本地 · 离线',
     rate: '语速',
   },
+  ru: {
+    resume: 'Продолжить',
+    pause: 'Пауза',
+    stop: 'Остановить чтение',
+    voice: 'Голос',
+    voiceAuto: 'Авто · по языку',
+    groupGoogleOnline: 'Google · онлайн',
+    groupLocalOffline: 'Локальные · офлайн',
+    rate: 'Скорость',
+  },
 }

@@ -18,4 +18,11 @@ export default {
     sharedTags: '同为 {list}',
     sharedSources: '同样引用 {list}',
   },
+  ru: {
+    heading: 'Обратные ссылки ({n})',
+    empty: 'Нет обратных ссылок',
+    relatedHeading: 'Связанные ({n})',
+    sharedTags: 'общие {list}',
+    sharedSources: 'ссылается на {list}',
+  },
 }

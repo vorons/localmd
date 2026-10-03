@@ -24,4 +24,16 @@ export default {
     discard: '放弃',
     keepEditing: '继续编辑',
   },
+  ru: {
+    title: 'Заметка',
+    placeholder: 'Запишите мысль… (⌘↵ — сохранить)',
+    saveNote: 'Сохранить заметку (⌘↵)',
+    highlight: 'Выделить {name}',
+    readSelection: 'Прочитать выделенное',
+    underline: 'Подчёркивание',
+    deleteMark: 'Удалить всю аннотацию',
+    unsavedPrompt: 'Заметка не сохранена — всё равно закрыть?',
+    discard: 'Отбросить',
+    keepEditing: 'Продолжить редактирование',
+  },
 }

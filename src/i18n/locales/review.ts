@@ -26,4 +26,16 @@ export default {
     deletedFinal: 'Agent 已删除——此操作无法撤销。',
     unchangedLines: '⋯ 未变动的 {n} 行 ⋯',
   },
+  ru: {
+    title: 'Изменения агента',
+    discardAll: 'Отбросить всё',
+    approveAll: 'Одобрить всё',
+    noPending: 'Нет ожидающих изменений',
+    discard: 'Отбросить',
+    dismiss: 'Скрыть',
+    approve: 'Одобрить',
+    deletedRestorable: 'Удалено агентом. «Отбросить» восстановит файл.',
+    deletedFinal: 'Удалено агентом — это действие нельзя отменить.',
+    unchangedLines: '⋯ {n} неизменённых строк ⋯',
+  },
 }
