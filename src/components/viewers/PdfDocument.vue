@@ -1292,7 +1292,7 @@ let msgTimer: number | null = null
  */
 type OcrStage = 'idle' | 'setup' | 'running'
 const ocrStage = ref<OcrStage>('idle')
-const ocrLang = ref(getLocale() === 'zh' ? 'chi_sim' : 'eng')
+const ocrLang = ref(getLocale() === 'zh' ? 'chi_sim' : getLocale() === 'ru' ? 'rus' : 'eng')
 const ocrPage = ref(0)
 const ocrPageCount = ref(0)
 const ocrNote = ref('')

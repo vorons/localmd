@@ -3,7 +3,7 @@
  * ref plus a `t(key, params?)` lookup over per-namespace message catalogs.
  *
  * Message catalogs live in ./locales/<namespace>.ts, each default-exporting
- * `{ en: {...}, zh: {...} }`. They're aggregated at build time by import.meta
+ * `{ en: {...}, zh: {...}, ru: {...} }`. They're aggregated at build time by import.meta
  * .glob, so adding a namespace file needs no central edit (keeps parallel work
  * conflict-free). Keys are dotted: `t('common.save')`, `t('settings.language')`.
  *
@@ -13,17 +13,19 @@
  */
 import { ref, readonly, watch, type App } from 'vue'
 
-export type Locale = 'en' | 'zh'
+export type Locale = 'en' | 'zh' | 'ru'
 
 export const LOCALES: { value: Locale; label: string }[] = [
   { value: 'en', label: 'English' },
   { value: 'zh', label: '中文' },
+  { value: 'ru', label: 'Русский' },
 ]
 
 /** Human-readable language name, for the agent prompt. */
 export const LOCALE_NAMES: Record<Locale, string> = {
   en: 'English',
   zh: 'Chinese (中文)',
+  ru: 'Russian (Русский)',
 }
 
 const STORAGE_KEY = 'localmd:locale'
@@ -31,24 +33,25 @@ const STORAGE_KEY = 'localmd:locale'
 type Messages = Record<string, unknown>
 
 // Eagerly bundle every namespace catalog. Vite/vitest resolve this at build
-// time; the shape is { './locales/common.ts': { default: { en, zh } }, … }.
-const modules = import.meta.glob<{ default: { en: Messages; zh: Messages } }>(
+// time; the shape is { './locales/common.ts': { default: { en, zh, ru } }, … }.
+const modules = import.meta.glob<{ default: { en: Messages; zh: Messages; ru: Messages } }>(
   './locales/*.ts',
   { eager: true },
 )
 
-const messages: Record<Locale, Messages> = { en: {}, zh: {} }
+const messages: Record<Locale, Messages> = { en: {}, zh: {}, ru: {} }
 for (const [path, mod] of Object.entries(modules)) {
   const ns = path.slice(path.lastIndexOf('/') + 1, -'.ts'.length)
   messages.en[ns] = mod.default.en
   messages.zh[ns] = mod.default.zh
+  messages.ru[ns] = mod.default.ru
 }
 
 /** Default English (per product decision); a saved choice wins. */
 function loadLocale(): Locale {
   try {
     const saved = localStorage.getItem(STORAGE_KEY)
-    if (saved === 'en' || saved === 'zh') return saved
+    if (saved === 'en' || saved === 'zh' || saved === 'ru') return saved
   } catch {
     /* private mode / disabled storage — fall through to the default */
   }

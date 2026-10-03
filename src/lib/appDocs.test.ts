@@ -9,7 +9,7 @@ import {
 } from './appDocs'
 import { hashDocSource } from './docHash'
 
-const LOCALES = ['en', 'zh']
+const LOCALES = ['en', 'zh', 'ru']
 
 describe('app docs', () => {
   const docs = listAppDocsForAgent()
@@ -80,6 +80,8 @@ describe('app docs', () => {
     for (const d of docs) {
       const zh = appDoc(d.id, 'zh')!
       expect(zh.title, `${d.id} zh title is untranslated`).not.toBe(d.title)
+      const ru = appDoc(d.id, 'ru')!
+      expect(ru.title, `${d.id} ru title is untranslated`).not.toBe(d.title)
     }
   })
 
@@ -91,7 +93,7 @@ describe('app docs', () => {
     for (const d of docs) {
       for (const locale of LOCALES) {
         const body = appDoc(d.id, locale)!.body
-        const related = /\n#+ (?:Related|相关)\n([\s\S]*)$/.exec(body)?.[1] ?? ''
+        const related = /\n#+ (?:Related|相关|См\. также)\n([\s\S]*)$/.exec(body)?.[1] ?? ''
         for (const m of related.matchAll(/`([a-z][a-z0-9-]*)`/g)) {
           if (!ids.has(m[1])) dangling.push(`${d.id}.${locale} → ${m[1]}`)
         }

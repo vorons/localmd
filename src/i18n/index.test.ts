@@ -42,19 +42,29 @@ describe('i18n', () => {
 })
 
 describe('locale catalogs', () => {
-  const modules = import.meta.glob<{ default: { en: unknown; zh: unknown } }>(
+  const modules = import.meta.glob<{ default: { en: unknown; zh: unknown; ru: unknown } }>(
     './locales/*.ts',
     { eager: true },
   )
 
   for (const [path, mod] of Object.entries(modules)) {
     const ns = path.slice(path.lastIndexOf('/') + 1, -3)
-    it(`${ns}: en and zh have identical keys`, () => {
+    it(`${ns}: en, zh and ru have identical keys`, () => {
       const en = leafKeys(mod.default.en).sort()
       const zh = leafKeys(mod.default.zh).sort()
-      const onlyEn = en.filter((k) => !zh.includes(k))
+      const ru = leafKeys(mod.default.ru).sort()
+      const onlyEn = en.filter((k) => !zh.includes(k) || !ru.includes(k))
       const onlyZh = zh.filter((k) => !en.includes(k))
-      expect({ onlyEn, onlyZh }).toEqual({ onlyEn: [], onlyZh: [] })
+      const onlyRu = ru.filter((k) => !en.includes(k))
+      const missingZh = en.filter((k) => !zh.includes(k))
+      const missingRu = en.filter((k) => !ru.includes(k))
+      expect({ onlyEn, onlyZh, onlyRu, missingZh, missingRu }).toEqual({
+        onlyEn: [],
+        onlyZh: [],
+        onlyRu: [],
+        missingZh: [],
+        missingRu: [],
+      })
     })
   }
 

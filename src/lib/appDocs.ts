@@ -17,8 +17,8 @@
  *
  * Files live in `docs/app/` and are imported at build time, so they ship in the
  * bundle: the user's KB folder stays untouched and a doc is never something
- * they have to install or sync. `<id>.md` is English and canonical; `<id>.zh.md`
- * is its translation. The agent always reads English (prompts are English, and
+ * they have to install or sync. `<id>.md` is English and canonical; `<id>.zh.md`,
+ * `<id>.ru.md` and other `<id>.<locale>.md` files are its translations. The agent always reads English (prompts are English, and
  * one language is one thing to keep true); the Help panel follows the user's
  * interface language and falls back to English for a topic not yet translated.
  */
@@ -99,7 +99,7 @@ function rank(id: string): number {
   return i === -1 ? ORDER.length : i
 }
 
-/** id → { en, zh? }. A `.zh.md` file registers as a translation of its base id
+/** id → { en, zh?, ru?, … }. A `.zh.md` / `.ru.md` file registers as a translation of its base id
  *  rather than as a topic of its own. */
 const BY_ID = new Map<string, Partial<Record<string, AppDoc>>>()
 /** The English source's current fingerprint, to compare a translation against. */

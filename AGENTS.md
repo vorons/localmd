@@ -16,7 +16,8 @@ and LLM prompts are written in English by default — regardless of the language
 the task was discussed in — unless explicitly asked otherwise. The only
 intentional Chinese in the tree: the `zh` values in i18n catalogs
 (`src/i18n/locales/*`), `LOCALE_NAMES`, and the CJK regex/fixture data in lib
-(annotations / markdown / tts / pdf extraction).
+(annotations / markdown / tts / pdf extraction), plus the intentional Russian
+in the `ru` values of the same catalogs and in `docs/app/*.ru.md`.
 
 ## Product principles
 

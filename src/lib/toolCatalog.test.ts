@@ -59,11 +59,12 @@ describe('catalog shape', () => {
    * only thing standing between "added an entry" and "added an entry someone
    * can read".
    */
-  it('gives every entry a title and description in both languages', () => {
+  it('gives every entry a title and description in every language', () => {
     for (const { id } of CATALOG) {
       for (const [lang, catalog] of [
         ['en', settings.en.catalog],
         ['zh', settings.zh.catalog],
+        ['ru', settings.ru.catalog],
       ] as const) {
         const copy = (catalog as Record<string, { title?: string; desc?: string }>)[id]
         expect(copy?.title, `${id} (${lang}) title`).toBeTruthy()
